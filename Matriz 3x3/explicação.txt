@@ -1,0 +1,2 @@
+Objetivo: Implementação de uma classe de matriz 3x3 para utilizar em um jogo c++.
+biblioteca utilizada: OpenFrameWorks.

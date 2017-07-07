@@ -1,0 +1,54 @@
+Descrição:
+TDE:
+Implementar uma classe de matriz 3x3 (Matrix3). A classe deve conter:
+- Construtor padrão (deve criar uma matriz identidade)
+- Construtor com os 9 floats iniciais
+- Construtor de cópia
+- Cópia de matriz: operador =
+- Multiplicação de matrizes: operador *
+- Calculo do determinante
+- Calculo da inversa
+- Calculo da transposta
+- Transformação de um ofVec2f pela matriz (multiplicação de vetor pela matriz). O método terá a assinatura:
+ofVec2f Matrix3f::transform(const ofVec2f& vector, float z=1.0f) const;
+
+- Métodos fábrica estáticos para:
+-- Construção das matrizes de rotação, translação e escala
+
+OPCIONAL (1 ponto extra):
+- Soma de matrizes: operadores + e +=
+- Subtração de matrizes: operadores - e -=
+- Acesso aos elementos da matriz pelo operador (). ex:
+mat(3,2) = 10;
+- Acesso aos elementos pelos métodos a(), b(), c(), d(), e(), f(), g(), h() e k() no formato:
+[a b c]
+[d e f]
+[g h k]
+
+TRABALHO FINAL:
+Implementar um game em turnos de tanques de guerra. O jogo deve utilizar suas classes de matrizes, feitas no TDE.
+
+Cada jogador possui um tanque de guerra. 
+- Os tanques estão inicialmente posicionados em lados opostos da tela, em posições aleatórias.
+
+A cada turno cada jogador:
+- Girará a torre. A torre pode mover-se até 90 graus para cada lado. Em um único turno, a movimentação máxima é de 30 graus
+- Girará o tanque: Em um único turno, tanque poderá girar até 30 graus para qualquer lado. A torre gira com ele.
+- Mover o tanque: O jogador deve escolher velocidade baixa, média ou alta (teclas 1, 2 ou 3). Isso moverá o tanque para frente, na direção em que estiver virado. Embora o jogador escolha, a movimentação só deve ocorrer ao final do turno dos DOIS jogadores.
+
+Ao final do turno dos DOIS jogadores:
+- Os tanques se movem e atiram. O tiro deve percorrer no máximo 1/4 da distância da tela. O jogador que atingir o outro vence. 
+- Caso um tanque se mova para fora da tela, é destruído e o jogador restante vence.
+
+Como na atividade do robô, não é necessário gráficos elaborados, nem som. Não é necessário ter menu, ou mesmo tela de vitória (vc pode dar um cout para indicar quem venceu). O jogo pode permitir apenas 1 única partida por execução.
+
+Para utilizar suas próprias matrizes, é necessário utilizar a função ofMultMatrix(). Ela recebe como argumento uma ofMatrix4x4. Para isso, crie a função to4x4() na sua classe de matriz. Exemplo:
+
+ofMatrix4x4 Matrix3::to4x4() {
+ofMatrix4x4 m4x4(
+a(), b(), 0.0f, c()
+d(), e(), 0.0f, f()
+0.0, 0.0f, 1.0f, 0.0f,
+g(), h(), 0.0f, k());
+return m4x4;
+}
